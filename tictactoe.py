@@ -108,8 +108,6 @@ def menu():
 	elif temp == 2:
 		return "init_two_pl"
 	elif temp == 3:
-		return "init_one_pl"
-	elif temp == 4:
 		os.system('clear')
 		end_credit()
 
@@ -172,16 +170,16 @@ while True:
 		while True:
 
 			if flag == 1:
-				if raw_input():
-					pass
-
 				break
 
 			if c == 9:
 
 				print "              ----- >> DRAW << -----              "
-				if raw_input() == "":
-					pass
+				print "Would you like to replay?"
+				if raw_input() == "yes":
+					flag = 0
+					c = 0
+					continue
 				break
 
 			if turn == 1:
@@ -287,7 +285,7 @@ while True:
 		turn = 1
 		flag = 0
 
-		position_occ = [] ## Occupied position in board
+		position_remaining = [1, 2, 3, 4, 5, 6, 7, 8, 9] ## Occupied position in board
 		comp_pos = [] ## Opponent position for computer
 		player_pos = []
 
@@ -295,6 +293,23 @@ while True:
 
 			if flag == 1:
 				break
+
+			if c == 9:
+				print "              ----- >> DRAW << -----              "
+				if raw_input() == "":
+					print "would you like to replay yes/no?"
+					if raw_input() == "yes":
+						position_remaining = [1, 2, 3, 4, 5, 6, 7, 8, 9] ## Occupied position in board
+						board = [[" " for x in range(3)]for x in range(3)]
+						comp_pos = [] ## Opponent position for computer
+						player_pos = []
+						flag= 0
+						c = 0
+						continue
+					else:
+						flag = 1
+						break
+
 
 			if turn == 1:
 
@@ -307,7 +322,7 @@ while True:
 
 			if curr_player == "Comp_AI":
 
-				i, j = AI.Play(board, comp_pos, player_pos, comp_symb, pl_symb)
+				i, j = AI.Play(board, comp_pos, player_pos, comp_symb, pl_symb, position_remaining)
 				pos = position.positionnum([i, j])
 			else:
 
@@ -326,19 +341,12 @@ while True:
 				if flag == 1:
 					break
 
-				if c == 9:
-					print "              ----- >> DRAW << -----              "
-					if raw_input == "":
-						pass
-					break
-
 				if board[i][j] != " ":
 					
 					os.system('clear')
 					display(board)
 				
 					print curr_player + " : Choose another place in grid : "
-
 					break
 				else:
 
@@ -348,7 +356,7 @@ while True:
 					else:
 						player_pos.append(pos)
 					
-					position_occ.append(pos)
+					position_remaining.remove(pos)
 
 					os.system('clear')
 					display(board)
@@ -362,6 +370,10 @@ while True:
 						if raw_input() == "yes":
 							board = [[" " for x in range(3)]for x in range(3)]
 							flag = 0
+							position_remaining = [1, 2, 3, 4, 5, 6, 7, 8, 9] ## Occupied position in board
+							board = [[" " for x in range(3)]for x in range(3)]
+							comp_pos = [] ## Opponent position for computer
+							player_pos = []
 							os.system('clear')
 							display(board)
 							c = 0
