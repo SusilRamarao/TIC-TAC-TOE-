@@ -75,10 +75,10 @@ INSTRUCTIONS:
 			pass
 
 def end_credit():
-    msg_end = "A Backbencher Game Production"
+    msg_end = "Backbencher's Games"
     end = [[" " for i in range(47)]for i in range(14)]
     for i in range(len(msg_end)):
-        end[10][i+6] = msg_end[i]
+        end[10][i+11] = msg_end[i]
 
     for row in end:
         print " ".join(map(str,row))
