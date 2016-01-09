@@ -48,6 +48,8 @@ def Play(board, Comp_position, Opp_position, Comp_symbol, player_symbol):
 			continue
 		else:
 			return position.positionnum(i)
+			
+	return position.positionnum(random.choise(pos_remain))
 
 	
 
