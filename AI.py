@@ -12,7 +12,7 @@ def winstrike(board, position, temp_symbol):
 
 	return temp_winstrike
 
-def Play(board, Comp_position, Opp_position, Comp_symbol, player_symbol):
+def Play(board, Comp_position, Opp_position, Comp_symbol, player_symbol, pos_remain):
 	comp_winstrike = dict()
 	player_winstrike = dict()
 
