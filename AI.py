@@ -1,6 +1,5 @@
 from checkConstraintfinal1 import CheckConstraints
 import position
-import changeboard
 
 
 def winstrike(board, position, temp_symbol):
