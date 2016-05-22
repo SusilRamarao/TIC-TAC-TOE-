@@ -156,7 +156,7 @@ def CheckConstraints(position, board, predict, temp_symbol, direction):
 				elif predict == 3 and board[x][j] == temp:
 					j -= 1
 					continue
-				elif predict == 3and board[x][j] != temp:
+				elif predict == 3 and board[x][j] != temp:
 					return [x, j]
 				else:
 					true = 0
